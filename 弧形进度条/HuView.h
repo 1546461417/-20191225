@@ -21,11 +21,16 @@ typedef NS_ENUM(NSInteger,CircleType) {
 };
 @interface HuView : UIView
 
--(void)stopTimer;
+
 @property(nonatomic,assign)int numDown;
 @property(nonatomic,assign)int num;
 @property(nonatomic,strong)UILabel *numLabel;
 @property(nonatomic,strong)NSTimer *timer;
 @property (nonatomic,assign)CircleType circleType;
 @property (nonatomic,assign)CGFloat lineWidth;
+
+@property(assign,nonatomic)CGFloat progress;
+@property(assign,nonatomic)CGFloat startAngle;
+
+@property(assign,nonatomic)CGFloat endAngle;
 @end

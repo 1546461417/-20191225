@@ -29,7 +29,7 @@
                      
                      CGFloat itemHeight = 100; // 高
                      
-                     int totalColumns = 2; // 每行最大列数（影响到底几个换行）
+                     int totalColumns = 1; // 每行最大列数（影响到底几个换行）
               int row = index / totalColumns;
               int col = index % totalColumns;
               CGFloat cellX =  50 +col * (itemWidth + margin_X);
@@ -39,8 +39,9 @@
                [self.view addSubview:_huView];
                huView.backgroundColor = [UIColor greenColor];
                huView.numDown = 10;
-               huView.lineWidth = 10;
-            
+//              // 此时为扇形
+//               huView.lineWidth = huView.frame.size.height/2;
+            huView.lineWidth = 20;
               switch (index) {
                   case 0:
                        huView.circleType = circleTypeCWAdd;

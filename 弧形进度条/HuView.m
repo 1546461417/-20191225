@@ -22,11 +22,11 @@
     CGContextSetLineWidth(ctx, _lineWidth);
     //1.2 设置线条的起始点样式
     CGContextSetLineCap(ctx,kCGLineCapButt);
-    //1.3  虚实切换 ，实线5虚线10
-    CGFloat length[] = {4,0};
+    //1.3  虚实切换 ，实线5虚线为负值则h不会看到交替现象
+    CGFloat length[] = {4,- 0.001};
     CGContextSetLineDash(ctx, 0, length, 2);
     //1.4 设置颜色
-    [[UIColor whiteColor] set];
+    [[UIColor orangeColor] set];
     CGFloat end;
     switch (_circleType) {
         case circleTypeCWAdd:
@@ -62,7 +62,7 @@
     //1.2 设置线条的起始点样式
     CGContextSetLineCap(ctx,kCGLineCapButt);
     //1.3  虚实切换 ，实线5虚线10
-    CGFloat length[] = {4,0};
+    CGFloat length[] = {4,- 0.001};
     CGContextSetLineDash(ctx, 0, length, 2);
     //1.4 设置颜色
     [[UIColor blackColor] set];
@@ -119,5 +119,55 @@
        [self.timer invalidate];
        self.timer = nil;
 }
+
+//
+//- (void)drawShan{
+//   
+//    //    定义扇形中心
+//          CGPoint origin = CGPointMake(self.center.x, self.center.y);
+//      //    定义扇形半径
+//          CGFloat radius = 100.0f;
+//          
+//      //    设定扇形起点位置
+//          CGFloat startAngle = - M_PI_2;
+//      //    根据进度计算扇形结束位置
+//          CGFloat endAngle = startAngle + 1.0 *_num/_numDown * M_PI * 2;
+//          
+//      //    根据起始点、原点、半径绘制弧线
+//          UIBezierPath *sectorPath = [UIBezierPath bezierPathWithArcCenter:origin radius:radius startAngle:startAngle endAngle:endAngle clockwise:YES];
+//          
+//      //    从弧线结束为止绘制一条线段到圆心。这样系统会自动闭合图形，绘制一条从圆心到弧线起点的线段。
+//          [sectorPath addLineToPoint:origin];
+//          
+//      //    设置扇形的填充颜色
+//          [[UIColor darkGrayColor] set];
+//          
+//      //    设置扇形的填充模式
+//          [sectorPath fill];
+//}
+//
+//
+//- (void)ballShow{
+//    CGPoint origin = CGPointMake(self.center.x, self.center.y);
+//         CGFloat radius = self.frame.size.width/2;
+//         
+//         UIBezierPath *ballPath = [UIBezierPath bezierPathWithArcCenter:origin radius:radius startAngle:_startAngle endAngle:_endAngle clockwise:YES];
+//         
+//         [[UIColor purpleColor]set];
+//         [ballPath fill];
+//         
+//     //    在球形的外面绘制一个描边空心的圆形，不然很难看
+//         UIBezierPath *strokePath = [UIBezierPath bezierPathWithArcCenter:origin radius:radius startAngle:0 endAngle:-0.00000001 clockwise:YES];
+//         [[UIColor orangeColor]set];
+//         [strokePath stroke];
+//    
+//         //    设置起始点，位置是根据进度动态变换的放到定时器方法中，这里先放到这里，实际开发h中要放到定时器的方法中
+//          self.startAngle = M_PI_2 - 1.0 *_num/_numDown * M_PI;
+//          self.endAngle = M_PI_2 + 1.0 *_num/_numDown * M_PI;
+//       
+//}
+//
+
+
 
 @end
